@@ -29,3 +29,9 @@ alias ll='ls -la'
 #alias ls='ls --color=auto'
 #alias ll='ls -la --color=auto'
 #alias grep='grep --color=auto'
+
+# plugins
+## zsh-syntax-highlighting
+if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
