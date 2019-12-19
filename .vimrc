@@ -1,7 +1,13 @@
 " visual
 syntax on
 set nu
+set ruler
 set cursorline
+set showmatch
+set list
+set listchars=tab:>-,extends:<
+set showcmd
+set statusline+=[%{has('multi_byte')&&\&fileencoding!=''?&fileencoding:&encoding}] " char code"
 
 " tab/indent
 set expandtab
@@ -10,6 +16,10 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 set smartindent
+set smarttab
+set backspace=indent,eol,start
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
 
 " backup file
 set nobackup
@@ -17,6 +27,12 @@ set noswapfile
 
 " copy past
 set clipboard+=unnamed
+
+" search
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
 
 " Vundle
 set nocompatible
@@ -44,3 +60,6 @@ Plugin 'sheerun/vim-polyglot' " language packs
 " /Vundle
 call vundle#end()
 filetype plugin indent on
+
+" map
+map <C-n> :NERDTreeToggle<CR>
