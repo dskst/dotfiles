@@ -18,8 +18,6 @@ set autoindent
 set smartindent
 set smarttab
 set backspace=indent,eol,start
-nnoremap <S-Tab> <<
-inoremap <S-Tab> <C-d>
 
 " backup file
 set nobackup
@@ -56,10 +54,13 @@ Plugin 'tpope/vim-commentary' " comment out
 Plugin 'vim-airline/vim-airline' " status bar
 Plugin 'pangloss/vim-javascript'
 Plugin 'sheerun/vim-polyglot' " language packs
+Plugin 'godlygeek/tabular' " markdown
+Plugin 'plasticboy/vim-markdown' " markdown
 
 " /Vundle
 call vundle#end()
 filetype plugin indent on
 
 " map
+source .vimrc.keymap
 map <C-n> :NERDTreeToggle<CR>

@@ -1,0 +1,4 @@
+" keymap
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
+
