@@ -62,5 +62,5 @@ call vundle#end()
 filetype plugin indent on
 
 " map
-source .vimrc.keymap
+source ~/.vimrc.keymap
 map <C-n> :NERDTreeToggle<CR>

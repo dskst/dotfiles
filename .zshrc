@@ -51,6 +51,6 @@ if [ -f '/usr/local/lib/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/loca
 if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/completion.zsh.inc'; fi
 
 # local settings
-if [ -f ~/.zsh/local/local.zsh  ]; then
-  source ~/.zsh/local/local.zsh
+if [ -f ~/.zsh/local/settings.zsh  ]; then
+  source ~/.zsh/local/settings.zsh
 fi
