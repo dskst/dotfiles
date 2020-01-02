@@ -1,5 +1,5 @@
 " keymap
-source .vimrc.keymap
+source ~/.vimrc.keymap
 nnoremap ,e :action SearchEverywhere<CR>
 nnoremap ,g :action FindInPath<CR>
 nnoremap ,s :action FileStructurePopup<CR>
