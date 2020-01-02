@@ -43,6 +43,11 @@ fi
 
 # path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/lib/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/path.zsh.inc'; fi
@@ -52,5 +57,6 @@ if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/us
 
 # local settings
 if [ -f ~/.zsh/local/settings.zsh  ]; then
+  echo "Use local settings."
   source ~/.zsh/local/settings.zsh
 fi
