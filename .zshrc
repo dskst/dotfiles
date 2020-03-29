@@ -55,6 +55,11 @@ if [ -f '/usr/local/lib/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/loca
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/completion.zsh.inc'; fi
 
+# functions
+fssh() {
+  grep -i '^host [^*]' ~/.ssh/config ~/.ssh/conf.d/hosts/* | cut -d ' ' -f 2 | fzf | xargs -o ssh
+}
+
 # local settings
 if [ -f ~/.zsh/local/settings.zsh  ]; then
   echo "Use local settings."
