@@ -25,10 +25,7 @@ export CLICOLOR=1
 export LSCOLORS="GxFxCxDxBxegedabagaced"
 
 # alias
-alias ll='ls -la'
-#alias ls='ls --color=auto'
-#alias ll='ls -la --color=auto'
-#alias grep='grep --color=auto'
+alias ll='exa -la --git'
 
 # plugins
 ## zsh-syntax-highlighting
