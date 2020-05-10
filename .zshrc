@@ -7,7 +7,7 @@ compinit
 zstyle ':completion:*:default' menu select=1 # Cursor Selection
 
 # Keybind
-bindkey -e
+bindkey -v
 
 # cd
 setopt AUTO_CD
@@ -18,7 +18,7 @@ setopt PUSHD_IGNORE_DUPS
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 
 # Color
 export CLICOLOR=1
@@ -26,6 +26,8 @@ export LSCOLORS="GxFxCxDxBxegedabagaced"
 
 # alias
 alias ll='exa -la --git'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # plugins
 ## zsh-syntax-highlighting
