@@ -40,6 +40,13 @@ if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+## zsh-ahistory-substring-search
+if [ -f /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+  source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
+fi
+
 # path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
