@@ -16,8 +16,8 @@ setopt PUSHD_IGNORE_DUPS
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt hist_ignore_all_dups
 
 # Color
@@ -28,6 +28,8 @@ export LSCOLORS="GxFxCxDxBxegedabagaced"
 alias ll='exa -la --git'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias gitcd='ghq get --look `ghq list |fzf`'
+alias history='history 100| fzf'
 
 # plugins
 ## zsh-syntax-highlighting
