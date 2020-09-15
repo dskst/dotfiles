@@ -28,7 +28,7 @@ export LSCOLORS="GxFxCxDxBxegedabagaced"
 alias ll='exa -la --git'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias gitcd='ghq get --look `ghq list |fzf`'
+alias ghqcd='ghq get --look `ghq list |fzf`'
 alias history='history 100| fzf'
 
 # plugins
