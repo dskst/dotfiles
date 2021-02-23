@@ -53,6 +53,7 @@ fi
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
