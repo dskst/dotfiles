@@ -1,5 +1,5 @@
 # Prompt
-PROMPT="[%n@%m %C]$ "
+# PROMPT="[%n@%m %C]$ "
 
 # Suggest
 autoload -Uz compinit
@@ -70,3 +70,6 @@ if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/us
 fssh() {
   grep -i '^host [^*]' ~/.ssh/config ~/.ssh/conf.d/hosts/* | cut -d ' ' -f 2 | fzf | xargs -o ssh
 }
+
+# starship
+eval "$(starship init zsh)"
