@@ -57,6 +57,7 @@ export PATH="/usr/local/sbin:$PATH"
 export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 eval "$(anyenv init -)"
 eval "$(goenv init -)"
 
