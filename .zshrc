@@ -26,6 +26,7 @@ export LSCOLORS="GxFxCxDxBxegedabagaced"
 
 # alias
 alias ll='exa -la --git'
+alias cat='bat'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ghqcd='ghq get --look `ghq list |fzf`'
