@@ -29,8 +29,6 @@ alias ll='exa -la --git'
 alias cat='bat'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias ghqcd='ghq get --look `ghq list |fzf`'
-alias history='history 100| fzf'
 
 # plugins
 ## zsh-syntax-highlighting
@@ -49,6 +47,9 @@ if [ -f /usr/local/share/zsh-history-substring-search/zsh-history-substring-sear
   bindkey -M vicmd 'k' history-substring-search-up
   bindkey -M vicmd 'j' history-substring-search-down
 fi
+
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -72,6 +73,26 @@ if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/us
 fssh() {
   grep -i '^host [^*]' ~/.ssh/config ~/.ssh/conf.d/hosts/* | cut -d ' ' -f 2 | fzf | xargs -o ssh
 }
+
+## cdr
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':completion:*' recent-dirs-insert both
+  zstyle ':chpwd:*' recent-dirs-default true
+  zstyle ':chpwd:*' recent-dirs-max 1000
+  zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
+fi
+
+function fzf-cdr () {
+    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | fzf --prompt="cdr > " --query "$LBUFFER" |awk '{print $2}')"
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+}
+zle -N fzf-cdr
+bindkey '^E' fzf-cdr
 
 # starship
 eval "$(starship init zsh)"
