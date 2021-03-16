@@ -1,6 +1,3 @@
-# Prompt
-# PROMPT="[%n@%m %C]$ "
-
 # Suggest
 autoload -Uz compinit
 compinit
@@ -73,6 +70,18 @@ if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/us
 fssh() {
   grep -i '^host [^*]' ~/.ssh/config ~/.ssh/conf.d/hosts/* | cut -d ' ' -f 2 | fzf | xargs -o ssh
 }
+
+## ghqcd
+function ghqcd() {
+  local src=$(ghq list | fzf --prompt="ghqcd > " --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N ghqcd
+bindkey '^G' ghqcd
 
 ## cdr
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
