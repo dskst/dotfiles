@@ -71,8 +71,8 @@ fssh() {
   grep -i '^host [^*]' ~/.ssh/config ~/.ssh/conf.d/hosts/* | cut -d ' ' -f 2 | fzf | xargs -o ssh
 }
 
-## ghqcd
-function ghqcd() {
+## ghq
+function fzf-ghq() {
   local src=$(ghq list | fzf --prompt="ghqcd > " --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$src" ]; then
     BUFFER="cd $(ghq root)/$src"
@@ -80,8 +80,8 @@ function ghqcd() {
   fi
   zle -R -c
 }
-zle -N ghqcd
-bindkey '^G' ghqcd
+zle -N fzf-ghq
+bindkey '^G' fzf-ghq
 
 ## cdr
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
