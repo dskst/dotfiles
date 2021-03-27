@@ -28,22 +28,25 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # plugins
-## zsh-syntax-highlighting
-if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
-## zsh-autosuggestions
-if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search" \
+
+## Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
+zplug load --verbose
 
 ## zsh-ahistory-substring-search
-if [ -f /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
-  source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-  bindkey -M vicmd 'k' history-substring-search-up
-  bindkey -M vicmd 'j' history-substring-search-down
-fi
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
