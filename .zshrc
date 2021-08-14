@@ -29,7 +29,7 @@ alias ....='cd ../../..'
 
 # plugins
 #export ZPLUG_HOME=/usr/local/opt/zplug
-export ZPLUG_HOME=/opt/homebrew/bin/zplug
+export ZPLUG_HOME=$(brew --prefix)/bin/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
