@@ -61,13 +61,16 @@ export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-eval "$(anyenv init -)"
-eval "$(goenv init -)"
+# export GOPATH="$HOME/go"
+# export PATH="$GOPATH/bin:$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
+# eval "$(anyenv init -)"
+# eval "$(goenv init -)"
+
+## The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/lib/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
+## The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/completion.zsh.inc'; fi
 
 # functions
