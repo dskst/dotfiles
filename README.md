@@ -11,4 +11,5 @@
 ~/.xvimrc
 ~/.zshrc
 ~/.ideavimrc
+~/.gitconfig
 ```
