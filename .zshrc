@@ -65,14 +65,14 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # export GOPATH="$HOME/go"
 # export PATH="$GOPATH/bin:$PATH"
 
-# eval "$(anyenv init -)"
+eval "$(anyenv init -)"
 # eval "$(goenv init -)"
 
 ## The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/lib/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 ## The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/lib/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # functions
 fssh() {
