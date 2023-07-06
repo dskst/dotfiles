@@ -62,8 +62,8 @@ export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-# export GOPATH="$HOME/go"
-# export PATH="$GOPATH/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 eval "$(anyenv init -)"
 # eval "$(goenv init -)"
@@ -123,3 +123,6 @@ bindkey -M visual S add-surround
 
 # starship
 eval "$(starship init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
