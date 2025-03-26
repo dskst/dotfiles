@@ -15,14 +15,17 @@ setopt PUSHD_IGNORE_DUPS
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+setopt hist_expire_dups_first
 setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_save_no_dups
 
 # Color
 export CLICOLOR=1
 export LSCOLORS="GxFxCxDxBxegedabagaced"
 
 # alias
-alias ll='exa -la --git'
+alias ll='eza -la --git'
 alias cat='bat'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -125,4 +128,5 @@ bindkey -M visual S add-surround
 eval "$(starship init zsh)"
 
 # direnv
+export EDITOR=vim
 eval "$(direnv hook zsh)"
