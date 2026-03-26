@@ -26,10 +26,10 @@ export LSCOLORS="GxFxCxDxBxegedabagaced"
 
 # alias
 alias ll='eza -la --git'
-alias cat='bat'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias suggest='f(){ claude -p "/suggest $*"; unset -f f; }; f'
+function suggest { claude -p "suggest: $*" --model haiku }
+function catcp { cat "$@" | pbcopy }
 
 # plugins
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
