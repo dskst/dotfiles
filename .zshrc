@@ -29,6 +29,7 @@ alias ll='eza -la --git'
 alias cat='bat'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias suggest='f(){ claude -p "/suggest $*"; unset -f f; }; f'
 
 # plugins
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
@@ -55,6 +56,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey '^R' fzf-history-widget
 
 # path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -67,6 +69,7 @@ export PATH="/usr/local/opt/ncurses/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(anyenv init -)"
 # eval "$(goenv init -)"
@@ -124,9 +127,20 @@ bindkey -a ds delete-surround
 bindkey -a ys add-surround
 bindkey -M visual S add-surround
 
+# jdk
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+. "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
 # starship
 eval "$(starship init zsh)"
 
 # direnv
 export EDITOR=vim
 eval "$(direnv hook zsh)"
+

@@ -3,3 +3,5 @@
 [user]
   name = dskst
   email = 10830352+dskst@users.noreply.github.com
+[init]
+  defaultBranch = main
