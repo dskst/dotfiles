@@ -25,6 +25,32 @@ return {
         },
       })
 
+      vim.lsp.config("ansiblels", {
+        settings = {
+          ansible = {
+            ansible = {
+              path = "ansible",
+            },
+            ansibleLint = {
+              path = "ansible-lint",
+            },
+            executionEnvironment = {
+              enabled = false,
+            },
+            python = {
+              interpreterPath = "python3",
+            },
+            validation = {
+              enabled = true,
+              lint = {
+                enabled = true,
+                path = "ansible-lint",
+              },
+            },
+          },
+        },
+      })
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
@@ -34,6 +60,7 @@ return {
           "bashls",
           "pyright",
           "marksman",
+          "ansiblels",
         },
         automatic_enable = true,
       })

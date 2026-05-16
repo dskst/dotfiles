@@ -41,3 +41,18 @@ vim.opt.statusline:append("[%{has('multi_byte')&&&fileencoding!=''?&fileencoding
 -- markdown options
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.vim_markdown_new_list_item_indent = 2
+
+-- ansible
+vim.filetype.add({
+  pattern = {
+    [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/defaults/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/vars/.*%.ya?ml"] = "yaml.ansible",
+    [".*/group_vars/.*%.ya?ml"] = "yaml.ansible",
+    [".*/host_vars/.*%.ya?ml"] = "yaml.ansible",
+    [".*/inventory/.*%.ya?ml"] = "yaml.ansible",
+    [".*/ansible/.*%.ya?ml"] = "yaml.ansible",
+  },
+})
