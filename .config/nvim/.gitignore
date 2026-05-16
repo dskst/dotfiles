@@ -1,0 +1,24 @@
+# local/private config
+lua/local.lua
+local.lua
+local.vim
+.env
+.env.*
+
+# temporary/session/cache-like files
+session/
+sessions/
+swap/
+backup/
+undo/
+view/
+
+# logs
+*.log
+log/
+
+# plugin-manager generated files for other managers
+plugin/packer_compiled.lua
+
+# OS
+.DS_Store
