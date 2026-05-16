@@ -138,6 +138,14 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
+# pnpm
+export PNPM_HOME="/Users/dskst/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # starship
 eval "$(starship init zsh)"
 
