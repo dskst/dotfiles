@@ -61,6 +61,7 @@ return {
           "pyright",
           "marksman",
           "ansiblels",
+          "gopls",
         },
         automatic_enable = true,
       })
