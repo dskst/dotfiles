@@ -40,7 +40,19 @@ return {
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
-          hide_gitignored = false,
+          hide_gitignored = true,
+
+          hide_by_name = {
+            ".idea",
+            ".vscode",
+          },
+
+          never_show = {
+            ".git",
+            ".DS_Store",
+            "node_modules",
+            ".gradle",
+          },
         },
       },
       window = {
