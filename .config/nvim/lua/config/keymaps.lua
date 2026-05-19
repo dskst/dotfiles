@@ -31,3 +31,22 @@ local old_keymap = vim.fn.expand("~/.vimrc.keymap")
 if vim.fn.filereadable(old_keymap) == 1 then
   vim.cmd("source " .. old_keymap)
 end
+
+-- file path copy
+vim.keymap.set("n", "<leader>yrp", function()
+  local path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+  vim.fn.setreg("+", path)
+  print("Copied relative path: " .. path)
+end, { desc = "Yank relative file path" })
+
+vim.keymap.set("n", "<leader>yap", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("Copied absolute path: " .. path)
+end, { desc = "Yank absolute file path" })
+
+vim.keymap.set("n", "<leader>yfn", function()
+  local name = vim.fn.expand("%:t")
+  vim.fn.setreg("+", name)
+  print("Copied file name: " .. name)
+end, { desc = "Yank file name" })
