@@ -198,3 +198,5 @@ if jdtls_java_version ~= nil and jdtls_java_version ~= "" then
 end
 
 jdtls.start_or_attach(config)
+
+vim.api.nvim_create_user_command("JdtR", "JdtWipeDataAndRestart", {})
