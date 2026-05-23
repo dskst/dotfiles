@@ -50,3 +50,9 @@ vim.keymap.set("n", "<leader>yfn", function()
   vim.fn.setreg("+", name)
   print("Copied file name: " .. name)
 end, { desc = "Yank file name" })
+
+-- Swagger preview
+vim.keymap.set("n", "<leader>sp", "<cmd>SwaggerPreviewToggle<CR>", {
+  desc = "Swagger preview toggle",
+})
+
