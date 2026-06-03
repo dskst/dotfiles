@@ -38,6 +38,8 @@ return {
       java = { "google-java-format" },
 
       lua = { "stylua" },
+
+      yaml = { "prettier" },
     },
 
     format_on_save = {
