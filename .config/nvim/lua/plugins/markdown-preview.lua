@@ -2,7 +2,11 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
-    build = "cd app && npm install",
+    build = function(plugin)
+      -- ビルド時はまだ runtimepath に入っていないため autoload を解決できるようにする
+      vim.opt.rtp:append(plugin.dir)
+      vim.fn["mkdp#util#install_sync"]()
+    end,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
 
