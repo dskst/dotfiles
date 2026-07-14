@@ -1,8 +1,13 @@
 function suggest {
   local system_prompt="あなたはmacOS/zsh環境向けのシェルコマンドを提案するツールである。
-ユーザーが入力した要件を満たすコマンドのみを出力する。
-説明文、前置き、後置き、Markdownのコードブロック記法は一切含めない。
-複数の候補がある場合は、コマンドを改行で列挙する。"
+ユーザーが入力した要件を満たすコマンドと50文字以内の説明文のみを出力する。
+前置き、後置き、Markdownのコードブロック記法は一切含めない。
+複数の候補がある場合は、コマンドを改行で列挙する。
+
+出力例:
+{コマンド}
+{説明分}
+"
   claude -p "$*" \
     --model haiku \
     --system-prompt "$system_prompt" \
@@ -17,11 +22,16 @@ function suggest {
   echo
 }
 
-function worktree {
+function gwt {
   local branch="$1"
   local dir="../$(basename "$PWD")_${branch//\//_}"
 
-  git worktree add "$dir" "origin/$branch" || return
+  if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+    git fetch origin "$branch" || return
+    git worktree add --track -b "$branch" "$dir" "origin/$branch" || return
+  else
+    git worktree add -b "$branch" "$dir" || return
+  fi
 
   (
     setopt nullglob
@@ -39,5 +49,5 @@ fssh() {
 }
 
 function catcp {
-  cat "$@" | pbcopy 
+  cat "$@" | pbcopy
 }
