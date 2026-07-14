@@ -23,7 +23,46 @@ function suggest {
 }
 
 function gwt {
-  local branch="$1"
+  local branch="" remove=false
+  local -a force
+  local arg
+  for arg in "$@"; do
+    case "$arg" in
+      --remove) remove=true ;;
+      --force)  force=(--force) ;;
+      *)        branch="$arg" ;;
+    esac
+  done
+
+  if $remove; then
+    local main_dir
+    main_dir="$(git worktree list --porcelain | head -1 | cut -d' ' -f2-)" || return
+
+    if [[ -n "$branch" ]]; then
+      git worktree remove "${force[@]}" "../$(basename "$PWD")_${branch//\//_}" || return
+    else
+      local current
+      current="$(git rev-parse --show-toplevel)" || return
+      if [[ "$current" == "$main_dir" ]]; then
+        echo "gwt: specify the branch name of the worktree to remove" >&2
+        return 1
+      fi
+      branch="$(git rev-parse --abbrev-ref HEAD)" || return
+      cd "$main_dir" || return
+      git worktree remove "${force[@]}" "$current" || return
+    fi
+
+    if ! git branch -d "$branch"; then
+      echo "gwt: branch '$branch' is kept; run 'git branch -D $branch' to force-delete" >&2
+    fi
+    return
+  fi
+
+  if [[ -z "$branch" ]]; then
+    echo "usage: gwt <branch> [--remove [--force]]" >&2
+    return 1
+  fi
+
   local dir="../$(basename "$PWD")_${branch//\//_}"
 
   if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
