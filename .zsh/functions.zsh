@@ -24,14 +24,22 @@ function suggest {
 
 function gwt {
   local branch="" remove=false
-  local -a force
-  local arg
-  for arg in "$@"; do
-    case "$arg" in
+  local -a force copies
+  while (( $# )); do
+    case "$1" in
       --remove) remove=true ;;
       --force)  force=(--force) ;;
-      *)        branch="$arg" ;;
+      --copy)
+        if (( $# < 2 )); then
+          echo "gwt: --copy requires a file path" >&2
+          return 1
+        fi
+        shift
+        copies+=("${1%/}")
+        ;;
+      *)        branch="$1" ;;
     esac
+    shift
   done
 
   if $remove; then
@@ -59,7 +67,7 @@ function gwt {
   fi
 
   if [[ -z "$branch" ]]; then
-    echo "usage: gwt <branch> [--remove [--force]]" >&2
+    echo "usage: gwt <branch> [--copy <path>]... [--remove [--force]]" >&2
     return 1
   fi
 
@@ -76,6 +84,16 @@ function gwt {
     setopt nullglob
     cp -a .env .env.* .envrc "$dir/" 2>/dev/null || true
   )
+
+  local src
+  for src in "${copies[@]}"; do
+    if [[ ! -e "$src" ]]; then
+      echo "gwt: --copy: '$src' not found; skipped" >&2
+      continue
+    fi
+    mkdir -p "$dir/$(dirname "$src")"
+    cp -a "$src" "$dir/$(dirname "$src")/"
+  done
 
   command -v direnv >/dev/null && direnv allow "$dir"
 
